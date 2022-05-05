@@ -23,8 +23,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@kyve/core": "KYVENetwork/core#v0.4.0",
-    "@kyve/sdk": "KYVENetwork/sdk#main",
+    "@kyve/core": "^1.0.8",
     "near-api-js": "^0.44.2"
   },
   "devDependencies": {

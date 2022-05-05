@@ -432,13 +432,14 @@
     big-integer "^1.6.48"
     utility-types "^3.10.0"
 
-"@kyve/core@KYVENetwork/core#v0.4.0":
+"@kyve/core@^1.0.8":
   version "1.0.8"
-  resolved "https://codeload.github.com/KYVENetwork/core/tar.gz/eae7e1f00439effb249aa6aa4db79ba06abea63c"
+  resolved "https://registry.yarnpkg.com/@kyve/core/-/core-1.0.8.tgz#352851d0b7cb597e9bcf6fc7586eefbb7a6279c1"
+  integrity sha512-b9j56ukQv/09mEgbpMm10ub94SoH78dAIAxLy2tY40WtK+Etl7i03P1K+BJFUsi1dk91h/hvBgNPdfLcrvXDzg==
   dependencies:
     "@cosmjs/proto-signing" "^0.27.1"
     "@cosmjs/stargate" "^0.27.1"
-    "@kyve/sdk" KYVENetwork/sdk#main
+    "@kyve/sdk" "^1.0.7"
     "@types/cli-progress" "^3.9.2"
     "@types/du" "^1.0.1"
     "@types/jsonfile" "^6.0.1"
@@ -459,9 +460,10 @@
     tslog "^3.2.2"
     unique-names-generator "^4.6.0"
 
-"@kyve/sdk@KYVENetwork/sdk#main":
+"@kyve/sdk@^1.0.7":
   version "1.0.7"
-  resolved "https://codeload.github.com/KYVENetwork/sdk/tar.gz/876024fc151da2e04d4bdd8f21737a4b8ddac12e"
+  resolved "https://registry.yarnpkg.com/@kyve/sdk/-/sdk-1.0.7.tgz#0d0ba6884f6cb9f5e04307688337ebdeed5e9d20"
+  integrity sha512-0qwKU+LvpFijm4YfeyV+dZc0FxnYKREcdXeVG834JNyIJw+VEEOBDdUrunHSst7E4jixhosGDgq4aR2LUtWJ/w==
   dependencies:
     "@cosmjs/amino" "^0.28.3"
     "@cosmjs/crypto" "^0.27.1"
