@@ -2,13 +2,13 @@ import { connect } from 'near-api-js';
 import { NearConfig } from 'near-api-js/lib/near';
 import { Provider } from 'near-api-js/lib/providers';
 import { ChunkResult } from 'near-api-js/lib/providers/provider';
-import { NOT_FOUND, Signature } from './types';
+import { NOT_FOUND } from './types';
 
 export async function fetchHeight(
   endpoint: string,
-  signature: Signature
+  headers: any
 ): Promise<number> {
-  const provider = await initialiseNearRPC(endpoint, signature);
+  const provider = await initialiseNearRPC(endpoint, headers);
 
   const latestBlock = await provider.block({
     finality: 'final',
@@ -20,9 +20,9 @@ export async function fetchHeight(
 export async function fetchBlock(
   endpoint: string,
   height: number,
-  signature: Signature
+  headers: any
 ): Promise<any> {
-  const provider = await initialiseNearRPC(endpoint, signature);
+  const provider = await initialiseNearRPC(endpoint, headers);
 
   const block = await provider.block({
     blockId: height,
@@ -31,7 +31,7 @@ export async function fetchBlock(
   const chunks = await fetchChunks(
     endpoint,
     block.chunks.map((chunk) => chunk.chunk_hash),
-    signature
+    headers
   );
 
   return {
@@ -43,9 +43,9 @@ export async function fetchBlock(
 async function fetchChunks(
   endpoint: string,
   hashes: string[],
-  signature: Signature
+  headers: any
 ): Promise<any[]> {
-  const provider = await initialiseNearRPC(endpoint, signature);
+  const provider = await initialiseNearRPC(endpoint, headers);
   const chunks: ChunkResult[] = [];
 
   for (const hash of hashes) {
@@ -58,20 +58,14 @@ async function fetchChunks(
 
 async function initialiseNearRPC(
   endpoint: string,
-  signature: Signature
+  headers: any
 ): Promise<Provider> {
   const config: NearConfig = {
     // @ts-ignore
     deps: {},
     networkId: 'mainnet',
     nodeUrl: endpoint,
-    headers: {
-      'Content-Type': 'application/json',
-      Signature: signature.signature,
-      'Public-Key': signature.pubKey,
-      'Pool-ID': signature.poolId,
-      Timestamp: signature.timestamp,
-    },
+    headers,
   };
 
   const client = await connect(config);
