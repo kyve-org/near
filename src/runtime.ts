@@ -30,7 +30,7 @@ export default class Near implements IRuntime {
   }
 
   public async formatValue(value: any): Promise<string> {
-    return value.hash;
+    return value.header.hash;
   }
 
   private async generateCoinbaseCloudHeaders(core: Node): Promise<any> {
